@@ -1,0 +1,20 @@
+//para instalar tailwindcss en nuestro proyecto
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+
+//en tailwind.config.js agregamos en donde se van a aplicar los estilos
+ "./resources/**/*.blade.php",
+    "./resources/**/*.js"
+//despues corremos el servidor 
+npm run dev
+//y en nuestra pagina principal agregaremos el estilo en el head
+@vite('resources/css/app.css')
+
+//como crear un controlador 
+php artisan make:controller registrar
+
+//comandos para crear migration
+php artisan migrate// migra nuestra base de datos 
+php artisna migrate:rollback
+//asi podemos agrear un campo a una tabla ya creada
+php artisan make:migration add_usernanme_to_user_table 
