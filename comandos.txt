@@ -18,3 +18,5 @@ php artisan migrate// migra nuestra base de datos
 php artisna migrate:rollback
 //asi podemos agrear un campo a una tabla ya creada
 php artisan make:migration add_usernanme_to_user_table 
+//instarlar dropzone para subir una imagen
+ npm install --save dropzone

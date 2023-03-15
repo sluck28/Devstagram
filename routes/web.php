@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostController;
@@ -30,9 +31,15 @@ Route::post('/crear-cuenta', [RegistrerController::class,'store']);
 //rutas para login
 Route::get('/login',[LoginController::class,'index'])->name('login');
 Route::post('/login',[LoginController::class,'store']);
+
 //ruta para cerrar sesion
 Route::post('/logout',[LogoutController::class,'store'])->name('logout');
+
 //para crear un post
 Route::get('/post/create',[PostController::class,'create'])->name('post.create');
+
 //ruta para acceder al muro iniciando sesion y hacer una variable con {} para que nos muestre un url al entrar al muro
 Route::get('/{user:username}',[PostController::class,'index'])->name('post.index');
+
+//Ruta para subir una imagen
+Route::post('/imagenes',[ImagenController::class,'store'])->
