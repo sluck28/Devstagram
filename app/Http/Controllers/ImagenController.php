@@ -8,8 +8,16 @@ class ImagenController extends Controller
 {
     
 
-    public function store()
+    public function store(Request $request)
     {
-        return 'desde imagenController';
+        
+        if($request->hasFile('Foto')){
+
+            /**$empleado=Empleado::findOrFail($id);
+            /**Primero se borra la foto */
+            //Storage::delete('public/'.$empleado->Foto);
+            /**DEspues se guarda la nueva  */
+            //$datosEmpleado['Foto']=$request->file('Foto')->store('images','public');
+        }
     }
 }
