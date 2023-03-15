@@ -12,7 +12,7 @@ class ImagenController extends Controller
     {
         
         if($request->hasFile('Foto')){
-
+            dd('subiendo una foto');
             /**$empleado=Empleado::findOrFail($id);
             /**Primero se borra la foto */
             //Storage::delete('public/'.$empleado->Foto);
