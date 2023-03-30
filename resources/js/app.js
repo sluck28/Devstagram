@@ -14,3 +14,23 @@ const dropzone= new Dropzone('#dropzone',{
 }
 
 );
+
+//eventos de dropzone para la subida de archivos
+
+//con file podemos ver en consola loq ue se esta subiendo como imagen
+dropzone.on('sending',function(file,xhr,formData){
+    console.log(file);
+})
+dropzone.on('success',function(file,response ){
+    console.log(response);
+})
+
+dropzone.on('error',function(file,message){
+    console.log(message);
+})
+
+
+dropzone.on('removedfile',function(){
+    console.log('Archivo elminado');
+})
+
