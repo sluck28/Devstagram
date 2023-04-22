@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+//importamos esta clase para guardar la imagen en el servidor
+use Intervention\Image\Facades\Image;
 
 class ImagenController extends Controller
 {
@@ -21,8 +24,18 @@ class ImagenController extends Controller
 
 
             $imagen=$request->file('file');
+            //crea un id unico para nuestra imagen
+            $nombreImagen = Str::uuid(). "." .$imagen->extension();
+            //aqui se va a almacenar nuestra imagen con intervention
+            $imagenServidor= Image::make($imagen);
+            //le da a la imagen un ancho y un largo
+            $imagenServidor->fit(1000,1000);
+            //aqui estamos guardando la imagen en la carpeta de uploads
+            $imagenpPath= public_path('uploads'). '/'   .   $nombreImagen;
+            //aqui ya la guardamosP
+            $imagenServidor->save($imagenpPath);
 
-            return response()->json(['imagen'=>'Probando respuesta']);
+            return response()->json(['imagen'=>$nombreImagen]);
 
         }
     }

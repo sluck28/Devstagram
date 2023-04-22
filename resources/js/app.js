@@ -10,7 +10,9 @@ const dropzone= new Dropzone('#dropzone',{
     addRemoveLinks:true,
     dictRemoveFile:"Borrar archivo",
     maxFiles:1,
-    uploadMultiple:false
+    uploadMultiple:false,
+
+  
 }
 
 );
@@ -18,15 +20,12 @@ const dropzone= new Dropzone('#dropzone',{
 //eventos de dropzone para la subida de archivos
 
 //con file podemos ver en consola loq ue se esta subiendo como imagen
-dropzone.on('sending',function(file,xhr,formData){
-    console.log(file);
-})
-dropzone.on('success',function(file,response ){
-    console.log(response);
-})
 
-dropzone.on('error',function(file,message){
-    console.log(message);
+dropzone.on("success",function(file,response ){
+
+    //seleccionamos el input de la validacion
+    document.querySelector('[name="imagen"]').value=response.imagen
+
 })
 
 
