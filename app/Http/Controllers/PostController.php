@@ -23,6 +23,15 @@ class PostController extends Controller
    );
    }
 
+   public function store(Request $request){
+     // dd('creando post');
+     $this->validate($request,[
+       'title' =>'required',
+       'description' =>'required',
+       'image' =>'required'
+     ]);
+   }
+
    public function create()
    {
       return view('post.create');

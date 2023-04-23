@@ -20,3 +20,15 @@ php artisna migrate:rollback
 php artisan make:migration add_usernanme_to_user_table 
 //instarlar dropzone para subir una imagen
  npm install --save dropzone
+
+ //para instalar intervention image
+ composer  require intervention/image
+
+
+ //Para crear un modelo y una migration en un codigo
+ php artisan make:model --migration --controller --factory Post
+
+ //como correr el factory 
+ php artisan tinker
+ //para crear datos aleatorios
+ App\Models\Post::factory()->times(200)->create()
