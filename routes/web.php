@@ -42,4 +42,6 @@ Route::get('/post/create',[PostController::class,'create'])->name('post.create')
 Route::get('/{user:username}',[PostController::class,'index'])->name('post.index');
 
 //Ruta para subir una imagen
-Route::post('/imagenes',[ImagenController::class,'store']);
+Route::post('/imagenes',[ImagenController::class,'store'])->name('imagenes.store');
+
+Route::post('/posts',[PostController::class,'store'])->name('posts.store');

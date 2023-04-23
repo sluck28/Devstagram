@@ -10,7 +10,26 @@ const dropzone= new Dropzone('#dropzone',{
     addRemoveLinks:true,
     dictRemoveFile:"Borrar archivo",
     maxFiles:1,
-    uploadMultiple:false
+    uploadMultiple:false,
+
+  
 }
 
 );
+
+//eventos de dropzone para la subida de archivos
+
+//con file podemos ver en consola loq ue se esta subiendo como imagen
+
+dropzone.on("success",function(file,response ){
+
+    //seleccionamos el input de la validacion
+    document.querySelector('[name="imagen"]').value=response.imagen
+
+})
+
+
+dropzone.on('removedfile',function(){
+    console.log('Archivo elminado');
+})
+

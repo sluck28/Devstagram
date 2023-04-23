@@ -29,7 +29,7 @@ class LoginController extends Controller
 
         }
         //aqui lo redirigimos al muro
-        return redirect()->route('post.index',['user'=>auth()->user()->username]);
+        return redirect()->route('post.index',auth()->user()->username);
 
     }
 }
