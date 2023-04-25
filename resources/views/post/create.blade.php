@@ -54,6 +54,7 @@
                     <input
                     name="image"
                     type="hidden"
+                    value="{{old('image')}}"
                     >
                     @error('image')
                         <!--php cuenta con una libreria de menesajes de errores pero son en ingles-->

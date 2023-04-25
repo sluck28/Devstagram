@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{-- Sirve para solo traer hojas de estilos en una vista determinada tambien existe para escript --}}
+    {{-- Sirve para solo traer hojas de estilos en una vista determinada tambien existe para es --}}
     @stack('styles')
     <title>Desvtagram - @yield('titulo')</title>
     @vite('resources/css/app.css')

@@ -35,6 +35,7 @@ Route::post('/login',[LoginController::class,'store']);
 //ruta para cerrar sesion
 Route::post('/logout',[LogoutController::class,'store'])->name('logout');
 
+
 //para crear un post
 Route::get('/post/create',[PostController::class,'create'])->name('post.create');
 

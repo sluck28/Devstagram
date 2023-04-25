@@ -10,14 +10,28 @@ const dropzone= new Dropzone('#dropzone',{
     addRemoveLinks:true,
     dictRemoveFile:"Borrar archivo",
     maxFiles:1,
-    uploadMultiple:false
+    uploadMultiple:false,
+    //crearemos la funcion para que en la validacion no se borre la imagen subida
+  init  : function(){
+      if(document.querySelector('[name="image"]').value.trim()){
+        //creamos un objeto
+          const imagenPublicada= {}
+          //le damos un tamaño a la imagen
+          imagenPublicada.size= 1234;
+          imagenPublicada.name= document.querySelector('[name="image"]').value;
+
+          this.options.addedfile.call(this,imagenPublicada);
+          this.options.thumbnail.call(this,imagenPublicada,'/uploads/${imagenPublicada.name}');
+
+          imagenPublicada.previewElement.classList.add(
+            "dz-success",
+            "dz-complete"
+          );
+      }
+  },
 }
- //Conoceremos los eventos de dropzon
-
-
-
 );
-
+ //Conoceremos los eventos de dropzon
 // //evento para saber que archivo se esta subiendo en dropzone
 //     dropzone.on('sending',function(file,xhr,formData){
 //         console.log(formData);
