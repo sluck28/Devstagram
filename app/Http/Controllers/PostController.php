@@ -24,7 +24,7 @@ class PostController extends Controller
       [
          'user'=>$user,
          //manera de retornar la variabel de post
-         'post'=>$post	
+         'post'=>$post
       ]
    );
    }
@@ -35,7 +35,7 @@ class PostController extends Controller
        'title' =>'required',
        'description' =>'required',
        'image' =>'required',
-     
+
      ]);
 
      //aqui guardare los datos del post
@@ -54,6 +54,12 @@ class PostController extends Controller
    {
       return view('post.create');
    }
-
-   
+   //para mostrar una publicacion
+   public function show(User $user,Post $post)
+   {
+    //asi retornamos nuestra variable para mostrar los posts
+     return view('post.show',[
+         'post'=>$post
+     ]);
+   }
 }

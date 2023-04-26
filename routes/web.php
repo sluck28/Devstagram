@@ -46,4 +46,6 @@ Route::post('/posts',[PostController::class,'store'])->name('post.store');
 //Ruta para subir una imagen
 Route::post('/imagenes',[ImagenController::class,'store'])->name('imagenes.store');
 
-//ruta para visitar un post
+//ruta para visitar un post siempre se utiliza el show
+//para mostrar el nombre del usuario y el post le pasemos el username 
+Route::get('/{user:username}/posts/{post}',[PostController::class,'show'])->name('post.show');

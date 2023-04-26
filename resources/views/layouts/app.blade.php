@@ -23,7 +23,7 @@
                 <nav class="flex gap-2 items-center">
 
                     <a class="flex items-center gap-2 bg-white borde p-2 text-gray-600 rounded text-sm
-                    
+
                     uppercase font-bold cursor-pointer"
                         href="{{ route('post.create') }}">
                         <!--asi podemos tener algun icono en nuestro templeta-->

@@ -48,18 +48,7 @@
                         <p class="bg-red-500 text-white rounded-lg text-sm p-2 text-center">{{ $message }}</p>
                     @enderror
                 </div>
-                {{-- 
-                <div class="mb-5">
-                    <input
-                    name="image"
-                    type="hidden"
-                    value="{{old('image')}}"
-                    >
-                    @error('image')
-                    
-                        <p class="bg-red-500 text-white rounded-lg text-sm p-2 text-center">{{ $message }}</p>
-                    @enderror
-                </div> --}}
+            
 
                 <div class="mb-5">
                     <input type="hidden" name="image" value="{{ old('image') }}">
@@ -75,6 +64,6 @@
             </form>
 
         </div>
-      
+
     </div>
 @endsection
