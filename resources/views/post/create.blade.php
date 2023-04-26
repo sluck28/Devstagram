@@ -15,7 +15,7 @@
             <form action="{{ route('imagenes.store') }}" method="POST" enctype="multipart/form-data" id="dropzone"
                 class="dropzone border-dashed border-2 w-full h-96 rounded flex flex-col justify-center items-center">
                 {{-- siempre agregar el token en cualquier formulario --}}
-           @csrf
+                @csrf
 
             </form>
 
@@ -40,8 +40,7 @@
                     <label for="descripcion" class="mb-2 block uppercase text-gray-500 font-extrabold">
                         Descripcion
                     </label>
-                    <textarea id="descripcion" type="text" name="description"
-                        class="border p-3 w-full rounded-lg">{{old('description')}}
+                    <textarea id="descripcion" type="text" name="description" class="border p-3 w-full rounded-lg">{{ old('description') }}
                     </textarea>
 
                     @error('description')
@@ -49,7 +48,7 @@
                         <p class="bg-red-500 text-white rounded-lg text-sm p-2 text-center">{{ $message }}</p>
                     @enderror
                 </div>
-
+                {{-- 
                 <div class="mb-5">
                     <input
                     name="image"
@@ -57,7 +56,14 @@
                     value="{{old('image')}}"
                     >
                     @error('image')
-                        <!--php cuenta con una libreria de menesajes de errores pero son en ingles-->
+                    
+                        <p class="bg-red-500 text-white rounded-lg text-sm p-2 text-center">{{ $message }}</p>
+                    @enderror
+                </div> --}}
+
+                <div class="mb-5">
+                    <input type="hidden" name="image" value="{{ old('image') }}">
+                    @error('image')
                         <p class="bg-red-500 text-white rounded-lg text-sm p-2 text-center">{{ $message }}</p>
                     @enderror
                 </div>
@@ -69,5 +75,6 @@
             </form>
 
         </div>
+      
     </div>
 @endsection

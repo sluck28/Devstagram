@@ -31,7 +31,7 @@ class ImagenController extends Controller
 
 
         //return el nombreImagen para el id unico
-        return response()->json(['imagen'=>$nombreImagen]);
+        return response()->json(['image'=>$nombreImagen]);
 
 
     }

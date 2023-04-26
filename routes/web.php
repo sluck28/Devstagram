@@ -45,3 +45,5 @@ Route::post('/posts',[PostController::class,'store'])->name('post.store');
 
 //Ruta para subir una imagen
 Route::post('/imagenes',[ImagenController::class,'store'])->name('imagenes.store');
+
+//ruta para visitar un post
