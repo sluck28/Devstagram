@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
@@ -49,3 +50,6 @@ Route::post('/imagenes',[ImagenController::class,'store'])->name('imagenes.store
 //ruta para visitar un post siempre se utiliza el show
 //para mostrar el nombre del usuario y el post le pasemos el username 
 Route::get('/{user:username}/posts/{post}',[PostController::class,'show'])->name('post.show');
+
+//ruta para comentarios
+Route::post('/{user:username}/posts/{post}',[ComentarioController::class,'store'])->name('comentarios.store');

@@ -38,7 +38,8 @@
 
                         Crear
                     </a>
-                    <a class="font-bold uppercase text-gray-600 text-sm" href="#">Hola <span
+                    {{-- de esta manera podemos lleva al usuario al index poniendo el usuario autenticado --}}
+                    <a class="font-bold uppercase text-gray-600 text-sm" href="{{route('post.index',auth()->user()->username)}}">Hola <span
                             class="font-normal">{{ auth()->user()->username }}</span> </a>
                     <!--para agregar mas seguridad a nuestra pagina lo ponemos en un form el boton de cerrar sesion-->
                     <form action="{{ route('logout') }}" method="POST">

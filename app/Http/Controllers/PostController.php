@@ -11,7 +11,8 @@ class PostController extends Controller
    //asi se autentica la vista a nuestro muro
    public function __construct()
    {
-      $this->middleware('auth');
+      //con except podemos decirle a que pagina si puede tener acceso un usuario no autenticado
+      $this->middleware('auth')->except(['show','index']);
    }
 
    public function index(User $user)
@@ -59,7 +60,8 @@ class PostController extends Controller
    {
     //asi retornamos nuestra variable para mostrar los posts
      return view('post.show',[
-         'post'=>$post
+         'post'=>$post,
+         'user'=>$user
      ]);
    }
 }

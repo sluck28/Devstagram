@@ -9,7 +9,7 @@ class Post extends Model
 {
     use HasFactory;
     //informacion de la base de datos que se lee hacia la base de datos
-    protected $fillable=[
+    protected $fillable = [
         'title',
         'description',
         'image',
@@ -19,6 +19,11 @@ class Post extends Model
     public function user()
     {
         //utilizamos el select para traer datos especificos
-        return $this->belongsTo(User::class)->select(['name','username']);
+        return $this->belongsTo(User::class)->select(['name', 'username']);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comentario::class);
     }
 }
