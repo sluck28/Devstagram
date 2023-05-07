@@ -42,6 +42,7 @@ Route::get('/post/create',[PostController::class,'create'])->name('post.create')
 
 //ruta para acceder al muro iniciando sesion y hacer una variable con {} para que nos muestre un url al entrar al muro
 Route::get('/{user:username}',[PostController::class,'index'])->name('post.index');
+
 Route::post('/posts',[PostController::class,'store'])->name('post.store');
 
 //Ruta para subir una imagen
@@ -53,3 +54,5 @@ Route::get('/{user:username}/posts/{post}',[PostController::class,'show'])->name
 
 //ruta para comentarios
 Route::post('/{user:username}/posts/{post}',[ComentarioController::class,'store'])->name('comentarios.store');
+
+Route::delete('/posts/{post}',[PostController::class,'destroy'])->name('posts.destroy');

@@ -64,4 +64,15 @@ class PostController extends Controller
          'user'=>$user
      ]);
    }
+
+   //El metodo destroy es para eliminar algun dato de la base de datos
+   public function destroy(Post $post)
+   {
+      // dd('eliminando',$post->id);
+      $this->authorize('delete',$post);
+      $post->delete();
+      return redirect()->route('post.index',auth()->user()->username);
+
+   }
 }
+

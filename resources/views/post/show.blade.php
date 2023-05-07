@@ -24,6 +24,19 @@
                     {{ $post->description }}
                 </p>
             </div>
+            {{-- el boton solo se mostrara para las personas que esten autenticadas con el id del usuario 
+                asi que los invitados no pueden ver el boton --}}
+            @auth
+                @if ($post->user_id == auth()->user()->id)
+                    <form  action="{{route('post.destroy',$post)}}">
+                        {{-- utilizamos el metodo spuffin para eliminar algun post o dato --}}
+                        @method('DELETE')
+                        @csrf
+                        <input class="bg-red-500 hover:bg-red-600 p-2 rounded text-white font-bold mt-4  cursor-pointer"
+                            type="submit" value="eliminar publicacion">
+                    </form>
+                @endif
+            @endauth
         </div>
         <div class="md:w-1/2 p-5">
             <div class="shadow bg-white p-5 mb-5">
@@ -34,12 +47,11 @@
                     </p>
                     @if (session('mensaje'))
                         <div class="bg-green-500 p-2 rounded-lg  mb-6 text-white uppercase font-bold">
-                            {{session('mensaje')}}
+                            {{ session('mensaje') }}
                         </div>
-                        
                     @endif
                     {{-- asi se pasa la ruta al action en el formulario --}}
-                    <form action="{{route('comentarios.store',['post'=>$post,'user'=>$user])}}" method="POST">
+                    <form action="{{ route('comentarios.store', ['post' => $post, 'user' => $user]) }}" method="POST">
                         @csrf
                         <div class="mb-5">
                             <label for="comentario" class="mb-2 block uppercase text-gray-500 font-extrabold">
@@ -64,16 +76,15 @@
                         @foreach ($post->comments as $comentario)
                             <div class="p-5 border-gray-300 border-b">
                                 {{-- asi podemos acceder al perfil del usuario que nos comento --}}
-                                <a class="font-bold" href="{{route('post.index',$comentario->user)}}">
+                                <a class="font-bold" href="{{ route('post.index', $comentario->user) }}">
                                     {{-- aqui traemos el nombre del usuario que comento --}}
-                                    {{$comentario->user->username}}
+                                    {{ $comentario->user->username }}
                                 </a>
                                 {{-- traemos el comentario --}}
-                                <p>{{$comentario->comentario}}</p>
-                                <p class="text-sm text-gray-600">{{$comentario->created_at->diffForHumans()}}</p>
+                                <p>{{ $comentario->comentario }}</p>
+                                <p class="text-sm text-gray-600">{{ $comentario->created_at->diffForHumans() }}</p>
                             </div>
                         @endforeach
-                        
                     @else
                         <p class="p-10 text-center">No hay comentarios aun</p>
                     @endif
