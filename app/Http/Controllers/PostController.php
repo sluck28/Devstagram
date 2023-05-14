@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
@@ -68,9 +69,17 @@ class PostController extends Controller
    //El metodo destroy es para eliminar algun dato de la base de datos
    public function destroy(Post $post)
    {
-      // dd('eliminando',$post->id);
+      //  dd('eliminando',$post->id);
       $this->authorize('delete',$post);
       $post->delete();
+
+      //para eliminar la imagen
+      $imagen_path= public_path('uploads/' . $post->image);
+
+      if(File::exists($imagen_path)){
+        unlink($imagen_path);
+
+      }
       return redirect()->route('post.index',auth()->user()->username);
 
    }
