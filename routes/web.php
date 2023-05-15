@@ -38,6 +38,10 @@ Route::post('/login',[LoginController::class,'store']);
 //ruta para cerrar sesion
 Route::post('/logout',[LogoutController::class,'store'])->name('logout');
 
+//rutas para el perfil
+Route::get('/editar-perfil',[PerfilController::class,'index'])->name('perfil.index');
+Route::post('/editar-perfil',[PerfilController::class,'store'])->name('perfil.store');
+
 
 //para crear un post
 Route::get('/post/create',[PostController::class,'create'])->name('post.create');
@@ -51,7 +55,7 @@ Route::post('/posts',[PostController::class,'store'])->name('post.store');
 Route::post('/imagenes',[ImagenController::class,'store'])->name('imagenes.store');
 
 //ruta para visitar un post siempre se utiliza el show
-//para mostrar el nombre del usuario y el post le pasemos el username 
+//para mostrar el nombre del usuario y el post le pasemos el username
 Route::get('/{user:username}/posts/{post}',[PostController::class,'show'])->name('post.show');
 
 //ruta para comentarios
@@ -63,6 +67,3 @@ Route::delete('/posts/{post}',[PostController::class,'destroy'])->name('posts.de
 Route::post('/posts/{post}/likes',[LikeController::class,'store'])->name('post.likes.store');
 Route::delete('/posts/{post}/likes',[LikeController::class,'destroy'])->name('post.likes.destroy');
 
-//rutas para el perfil
-Route::get('user:usernane/editar-perfil',[PerfilController::class,'index'])->name('perfil.index');
-Route::post('user:usernane/editar-perfil',[PerfilController::class,'store'])->name('perfil.store');
