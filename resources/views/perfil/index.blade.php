@@ -14,7 +14,7 @@
                     <label for="username" class="mb-2 block uppercase text-gray-500 font-extrabold">
                         Username
                     </label>
-                    <input id="username" type="text" name="name" placeholder="Tu nombre de usuario"
+                    <input id="username" type="text" name="username" placeholder="Tu nombre de usuario"
                         class="border p-3 w-full rounded-lg" value="{{ auth()->user()->username }}">
 
                     @error('username')

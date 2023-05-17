@@ -7,9 +7,16 @@
 @section('contenido')
     <div class="flex justify-center">
         <div class="w-full md:w-8/12 lg:w-6/12 px-5 flex flex-col items-center md:flex-row">
+            @if ($user->imagen)
+            <div class="md:w-8/12 lg:w-6/12 px-5">
+                <img src="{{ asset('perfiles'). '/' . $user->imagen }}" alt="imagen de persfil">
+            </div>
+            @else
             <div class="md:w-8/12 lg:w-6/12 px-5">
                 <img src="{{ asset('images/usuario.svg') }}" alt="imagen de persfil">
             </div>
+            @endif
+
             <div class="md:w-8/12 lg:w-6/12 px-5 flex flex-col items-center md:justify-center md:items-start py-10">
                 <div class="flex items-center gap-4">
                     <!--Asi se imprime nombre del usuario-->
