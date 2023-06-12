@@ -16,9 +16,7 @@
                     <p class="text-gray-700  text-2xl">{{ $user->username }}</p>
                     @auth
                         @if ($user->id == auth()->user()->id)
-                            <a
-                            
-                            href="{{route('perfil.index',$user)}}" class="text-gray-500  hover:text-gray-600">
+                            <a href="{{ route('perfil.index', $user) }}" class="text-gray-500  hover:text-gray-600">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                     stroke="currentColor" class="w-6 h-6">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -47,6 +45,25 @@
                     <span class="font-normal">
                         Post
                     </span>
+
+                </p>
+                @auth
+                    <form action="{{ route('user.follow', $user) }}" method="POST">
+                        @csrf
+                        <input type="submit"
+                            class="bg-blue-600 text-white uppercase rounded-lg  px-3  py-1
+                    text-xs font-bold cursor-pointed"
+                            value="SEGUIR">
+                    </form>
+
+                    <form action="" method="POST">
+                        @csrf
+                        <input type="submit"
+                            class="bg-red-600 text-white uppercase rounded-lg  px-3  py-1
+                       text-xs font-bold cursor-pointed"
+                            value="Dejar de seguir">
+                    </form>
+                @endauth
             </div>
 
 

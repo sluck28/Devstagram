@@ -9,6 +9,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\RegistrerController;
 use App\Http\Controllers\ComentarioController;
+use App\Http\Controllers\FollowerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,3 +67,8 @@ Route::delete('/posts/{post}/likes',[LikeController::class,'destroy'])->name('po
 //rutas para el perfil
 Route::get('user:usernane/editar-perfil',[PerfilController::class,'index'])->name('perfil.index');
 Route::post('user:usernane/editar-perfil',[PerfilController::class,'store'])->name('perfil.store');
+
+//rutas para seguir
+Route::post('/{user/:username}/follow',[FollowerController::class,'store'])->name('user.follow');
+Route::delete('/{user/:username}/unfollow',[FollowerController::class,'delete'])->name('user.unfollow');
+
