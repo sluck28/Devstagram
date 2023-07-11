@@ -10,6 +10,7 @@ use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\RegistrerController;
 use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\FollowerController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +23,7 @@ use App\Http\Controllers\FollowerController;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-})->name('home');
+Route::get('/',HomeController::class)->name('home');
 
 //importamos la clase del controlador y aqui se mandan a llamar las acciones de GET,POST,PUT,DESTROY
 //SE RECOMIENDA DARLE UN NOMBRE A NUESTRAS RUTAS PARA NO TENER LINKS CAIDOS
