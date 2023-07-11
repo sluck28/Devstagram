@@ -67,15 +67,9 @@ Route::delete('/posts/{post}',[PostController::class,'destroy'])->name('posts.de
 //likes a los post
 Route::post('/posts/{post}/likes',[LikeController::class,'store'])->name('post.likes.store');
 Route::delete('/posts/{post}/likes',[LikeController::class,'destroy'])->name('post.likes.destroy');
-
-<<<<<<< HEAD
 //rutas para el perfil
-Route::get('user:usernane/editar-perfil',[PerfilController::class,'index'])->name('perfil.index');
-Route::post('user:usernane/editar-perfil',[PerfilController::class,'store'])->name('perfil.store');
 
 //rutas para seguir
-Route::post('/{user/:username}/follow',[FollowerController::class,'store'])->name('user.follow');
-Route::delete('/{user/:username}/unfollow',[FollowerController::class,'delete'])->name('user.unfollow');
+Route::post('/{user:username}/follow',[FollowerController::class,'store'])->name('user.follow');
+Route::delete('/{user:username}/unfollow',[FollowerController::class,'delete'])->name('user.unfollow');
 
-=======
->>>>>>> 4524e6b49bfc9120cbedd2f7220f691ed4135373

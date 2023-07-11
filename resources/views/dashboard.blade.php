@@ -23,13 +23,9 @@
                     <p class="text-gray-700  text-2xl">{{ $user->username }}</p>
                     @auth
                         @if ($user->id == auth()->user()->id)
-<<<<<<< HEAD
-                            <a href="{{ route('perfil.index', $user) }}" class="text-gray-500  hover:text-gray-600">
-=======
+                            <a href="{{ route('perfil.index', $user) }}" class="text-gray-500  hover:text-gray-600">x
                             <a
-
                             href="{{route('perfil.index')}}" class="text-gray-500  hover:text-gray-600">
->>>>>>> 4524e6b49bfc9120cbedd2f7220f691ed4135373
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                     stroke="currentColor" class="w-6 h-6">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -41,14 +37,15 @@
                     @endauth
                 </div>
                 <p class="text-gray-800 text-sm mb-3 font-bold mt-5">
-                    0
+                    {{$user->followers->count()}}
                     <span class="font-normal">
-                        Seguidores
+                        {{-- utilizamos choice para eleguir algun tipo de string a mostrar dependiendo el conteo --}}
+                        @choice('seguidor|seguidores',$user->followers->count())
                     </span>
                 </p>
 
                 <p class="text-gray-800 text-sm mb-3 font-bold">
-                    0
+                    {{$user->followings->count()}}
                     <span class="font-normal">
                         Siguiendo
                     </span>
@@ -61,21 +58,28 @@
 
                 </p>
                 @auth
+                @if ($user->id !== auth()->user()->id)
+                    @if (!$user->siguiendo(auth()->user()))
+                        
                     <form action="{{ route('user.follow', $user) }}" method="POST">
                         @csrf
                         <input type="submit"
-                            class="bg-blue-600 text-white uppercase rounded-lg  px-3  py-1
-                    text-xs font-bold cursor-pointed"
-                            value="SEGUIR">
+                        class="bg-blue-600 text-white uppercase rounded-lg  px-3  py-1
+                        text-xs font-bold cursor-pointed"
+                        value="SEGUIR">
                     </form>
-
-                    <form action="" method="POST">
+                    @else
+                    {{-- forma para seguir al usuario --}}
+                    <form action="{{route('user.unfollow',$user)}}" method="POST">
+                        @method('DELETE')
                         @csrf
                         <input type="submit"
-                            class="bg-red-600 text-white uppercase rounded-lg  px-3  py-1
-                       text-xs font-bold cursor-pointed"
-                            value="Dejar de seguir">
+                        class="bg-red-600 text-white uppercase rounded-lg  px-3  py-1
+                        text-xs font-bold cursor-pointed"
+                        value="Dejar de seguir">
                     </form>
+                    @endif
+                @endif
                 @endauth
             </div>
 

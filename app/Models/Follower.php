@@ -14,4 +14,7 @@ class Follower extends Model
         'user_id',
         'follower_id'
     ];
+
+
+    
 }
