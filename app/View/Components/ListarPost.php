@@ -11,10 +11,11 @@ class ListarPost extends Component
     /**
      * Create a new component instance.
      */
-    public $post;
-    public function __construct($post)
+    //mapeamos la variable del contralador homeController 
+    public $posts;
+    public function __construct($posts)
     {
-        $this->post = $post;
+        $this->posts = $posts;
     }
 
     /**

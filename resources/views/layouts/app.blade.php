@@ -9,6 +9,7 @@
     <title>Desvtagram - @yield('titulo')</title>
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
+    @livewireStyles()
 </head>
 
 <body class="bg-gray-100">
@@ -81,6 +82,6 @@
     </footer>
 
 
-
+@livewireScripts()
 </body>
 </hmtl>

@@ -7,6 +7,7 @@
     <div class="container mx-auto md:flex">
         <div class="md:w-1/2">
             {{-- aqui pondremos nuestra imagen --}}
+
             <img src="{{ asset('uploads') . '/' . $post->image }}" alt="{{ $post->title }}">
 
             <div class="p-3 flex items-center gap-4">
@@ -43,9 +44,10 @@
                         </div>
                     </form>
                     @endif
-              
+
                 @endauth
                 {{-- usamos count para saber si tiene datos nuestra publicacion --}}
+                
                 <p class="font-bold">{{$post->likes->count()}}
                     <span class="font-normal">Likes</span>
                 </p>
@@ -63,7 +65,7 @@
                     {{ $post->description }}
                 </p>
             </div>
-            {{-- el boton solo se mostrara para las personas que esten autenticadas con el id del usuario 
+            {{-- el boton solo se mostrara para las personas que esten autenticadas con el id del usuario
                 asi que los invitados no pueden ver el boton --}}
             @auth
                 @if ($post->user_id == auth()->user()->id)
