@@ -2,13 +2,10 @@
 
 
 @section('titulo')
- Devstagram
+    Devstagram
 @endsection
 
 @section('contenido')
-    @if ($posts->count())
-        <p>Hay posts</p>
-    @else
-        <p>No hay posts</p>
-    @endif
+{{-- podemos usar algun componente para no reutilizar codigo --}}
+   <x-listar-post :posts="$posts" />
 @endsection

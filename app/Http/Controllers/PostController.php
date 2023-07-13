@@ -20,7 +20,7 @@ class PostController extends Controller
    {
        //para traer las publicaciones de un solo usuario
       //hacer la paginacion con laravel usamos paginate
-       $post=Post::where('user_id',$user->id)->paginate(20);
+       $post=Post::where('user_id',$user->id)->latest()->paginate(20);
       //  dd($post);
       return view('dashboard',
       [

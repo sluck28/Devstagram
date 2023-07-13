@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+
+
+    public function __construct()
+    {
+            $this->middleware('auth');
+    }
+
     //utilizamos invoke cuando solo utilizamos un solo metodo en nuestro controlador
     public function __invoke()
     {
@@ -16,7 +23,8 @@ class HomeController extends Controller
         $ids = auth()->user()->followings->pluck('id')->toArray();
         //filtramos con una consulta de whereIn que nos permite traer datos de un arreglo
         //paginate para paginar los post dependiendo del numero
-        $posts = Post::whereIn('user_id', $ids)->paginate(20);
+        //usamos latest para que nos muestre desde la ultima publicacion echa
+        $posts = Post::whereIn('user_id', $ids)->latest()->paginate(20);
         //pasamos nuestra variable a nuestro view para pasarlo a la  vistax
         return view(
             'home',
